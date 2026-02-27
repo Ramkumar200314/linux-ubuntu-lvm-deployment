@@ -47,16 +47,19 @@ LV3 → 3.9GB
 All commands are available in:
 
 commands/lvm_implementation_commands.sh
+
 📂 Documentation
 
 Full project documentation available in:
 
 docs/Ubuntu_LVM_Project_Documentation.pdf
+
 📸 Screenshots
 
 Screenshots available in:
 
 screenshots/
+
 🔥 DevOps Relevance
 
 This project demonstrates:

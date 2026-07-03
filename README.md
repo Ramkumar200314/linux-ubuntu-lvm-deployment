@@ -53,6 +53,10 @@ Volume Group → lvmgrp
 | Logical Volume 2 | lv2 | 3 GB |
 | Logical Volume 3 | lv3 | 3.9 GB |
 
+
+## 🧱 LVM Architecture
+
+![LVM Architecture](lvm_architecture_diagram.png)
 ---
 
 ## 🔍 Key Commands Used
@@ -83,7 +87,17 @@ lvdisplay
 vgdisplay
 pvdisplay
 ```
+## 📂 Documentation
 
+Full project documentation:
+📄 [`docs/Ubuntu_LVM_Project_Documentation.pdf`](docs/Ubuntu_LVM_Project_Documentation.pdf.pdf)
+
+---
+
+## 📸 Screenshots
+
+Screenshots of each step available in:
+📁 [`screenshots/`](screenshots/)
 ## 🔥 DevOps Relevance
 
 This project directly demonstrates skills required for DevOps and Cloud Engineering roles:

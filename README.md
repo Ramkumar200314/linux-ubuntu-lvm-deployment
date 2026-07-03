@@ -1,73 +1,104 @@
-🚀 Ubuntu Server Deployment & LVM Implementation
+# 🐧 Ubuntu Server Deployment & LVM Implementation
 
-📌 Project Overview
+> **DevOps Relevance:** Linux storage management and disk scalability are core infrastructure skills for any DevOps/SRE engineer working with production systems.
 
-This project demonstrates the deployment of Ubuntu Server in a virtual environment and implementation of Logical Volume Management (LVM) for flexible disk management.
+---
 
-🛠 Technologies Used
+## 📌 Project Overview
 
-Ubuntu Server 22.04
+This project demonstrates the deployment of **Ubuntu Server 22.04** in a virtualized environment (VMware Workstation) and the implementation of **Logical Volume Management (LVM)** for flexible, scalable disk management — a critical real-world infrastructure skill.
 
-Linux CLI
+---
 
-LVM (Logical Volume Manager)
+## 🛠️ Technologies Used
 
-VMware Workstation
+| Technology | Purpose |
+|---|---|
+| Ubuntu Server 22.04 | Host operating system |
+| Linux CLI | System administration and configuration |
+| LVM (Logical Volume Manager) | Flexible disk and storage management |
+| VMware Workstation | Virtualization environment |
 
-🎯 Objectives
+---
 
-Install Ubuntu Server
+## 🎯 Objectives
 
-Add additional disk
+- ✅ Install and configure Ubuntu Server 22.04
+- ✅ Add and initialize an additional disk (`/dev/sdb`)
+- ✅ Create Physical Volume (PV)
+- ✅ Create Volume Group (VG)
+- ✅ Create multiple Logical Volumes (LVs)
+- ✅ Format and mount storage
+- ✅ Troubleshoot LVM extent allocation issue
 
-Create Physical Volume
+---
 
-Create Volume Group
+## 🧱 LVM Architecture
 
-Create Logical Volumes
+Physical Disk (/dev/sdb)
+↓
+Physical Volume (PV)
+↓
+Volume Group → lvmgrp
+↓
+┌───────────────────────────┐
+│  LV1 → 3GB  │  LV2 → 3GB  │  LV3 → 3.9GB  │
+└───────────────────────────┘
 
-Format and Mount Storage
+| Component | Name | Size |
+|---|---|---|
+| Physical Volume | /dev/sdb | Full disk |
+| Volume Group | lvmgrp | Total available |
+| Logical Volume 1 | lv1 | 3 GB |
+| Logical Volume 2 | lv2 | 3 GB |
+| Logical Volume 3 | lv3 | 3.9 GB |
 
-Troubleshoot LVM extent issue
+---
 
-🧱 LVM Architecture
+## 🔍 Key Commands Used
 
-PV → /dev/sdb
+All commands are documented in:
+📄 [`commands/lvm_implementation_commands.sh`](commands/lvm_implementation_commands.sh)
 
-VG → lvmgrp
+Quick reference:
 
-LV1 → 3GB
+```bash
+# Create Physical Volume
+pvcreate /dev/sdb
 
-LV2 → 3GB
+# Create Volume Group
+vgcreate lvmgrp /dev/sdb
 
-LV3 → 3.9GB
+# Create Logical Volumes
+lvcreate -L 3G -n lv1 lvmgrp
+lvcreate -L 3G -n lv2 lvmgrp
+lvcreate -l 100%FREE -n lv3 lvmgrp
 
-🔍 Commands
+# Format and Mount
+mkfs.ext4 /dev/lvmgrp/lv1
+mount /dev/lvmgrp/lv1 /mnt/lv1
 
-All commands are available in:
+# Verify
+lvdisplay
+vgdisplay
+pvdisplay
+```
 
-commands/lvm_implementation_commands.sh
+## 🔥 DevOps Relevance
 
-📂 Documentation
+This project directly demonstrates skills required for DevOps and Cloud Engineering roles:
 
-Full project documentation available in:
+| Skill | How It's Demonstrated |
+|---|---|
+| Linux System Administration | Full Ubuntu Server setup and CLI management |
+| Storage Management | LVM implementation with PV, VG, LV creation |
+| Disk Scalability | Flexible volume resizing without downtime |
+| Real-world Infrastructure | Troubleshooting LVM extent allocation issues |
+| Virtualization | VMware Workstation environment setup |
 
-docs/Ubuntu_LVM_Project_Documentation.pdf
+---
 
-📸 Screenshots
+## 📬 Contact
 
-Screenshots available in:
-
-screenshots/
-
-🔥 DevOps Relevance
-
-This project demonstrates:
-
-Linux system administration
-
-Storage management
-
-Disk scalability
-
-Real-world infrastructure handling
+**Developer:** Ram Kumar Kundrapu
+🔗 [LinkedIn](https://linkedin.com/in/ramkumarkundrapu) | [GitHub](https://github.com/Ramkumar200314)
